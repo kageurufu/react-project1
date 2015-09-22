@@ -5,6 +5,7 @@ import React from 'react'
 
 export default function WithHistory (Component: React.Element): React.Element {
   return React.createClass({
+    displayName: 'WithHistory',
     mixins: [ History ],
     render () {
       return <Component {...this.props} history={this.history} />

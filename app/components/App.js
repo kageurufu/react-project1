@@ -18,7 +18,7 @@ export default class App extends React.Component {
 	componentDidMount() {
 		this.handler = (store) => {
 			this.setState({auth: AuthenticationStore.getState() });
-			if (AuthenticationStore.getState().auth.loggedIn) {
+			if (AuthenticationStore.getState().loggedIn) {
 				this.props.history.pushState(null, '/');
 			}
 		};

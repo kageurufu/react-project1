@@ -40,6 +40,23 @@ export default class Header extends React.Component {
 		}
 	}
 
+	links(): React.Element {
+		if(this.state.auth.loggedIn) {
+			return (
+				<ul>
+					<li><Link activeClassName="current" to="/">Home</Link></li>
+					<li><Link activeClassName="current" to="/greet">Greet</Link></li>
+				</ul>
+			);
+		} else {
+			return (
+				<ul>
+					<li><Link activeClassName="current" to="/">Home</Link></li>
+				</ul>
+			);
+		}
+	}
+
 	render(): React.Element {
 		console.log("Header render");
 		return (
@@ -47,12 +64,7 @@ export default class Header extends React.Component {
 				<a className="brand">Project</a>
 
 				{this.userBlock()}
-				<ul>
-					<li><Link activeClassName="current" to="/">Home</Link></li>
-					<li><Link activeClassName="current" to="/greet/Frank">Frank</Link></li>
-					<li><Link activeClassName="current" to="/greet/Julian">Julian</Link></li>
-					<li><Link activeClassName="current" to="/toilet404">Error Page</Link></li>
-				</ul>
+				{this.links()}
 			</header>
 		);
 	}

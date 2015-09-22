@@ -1,7 +1,7 @@
 /* @flow */
 
-type Response = { json: function; body: any; status: number; statusText: string; };
-// type Request = { method: string; headers: any; body: any };
+type Response = { json: () => any; body: any; status: number; statusText: string; };
+type Request = { method: string; headers: any; body: any };
 
 class HTTPError extends Error {
   response: Response;
@@ -40,9 +40,10 @@ var HTTP = {
   headers: { 'Accept': 'application/json' },
 
   request: function(method: string, url: string, data: ?Object): Promise {
-    var req: any = {
+    var req: Request = {
       method: method,
-      headers: Object.assign({}, HTTP.headers)
+      headers: Object.assign({}, HTTP.headers),
+      body: null
     };
     if (data != null) {
       req.headers['Content-Type'] = 'application/json';
