@@ -11,7 +11,7 @@ export default class Login extends React.Component {
 		super(props);
 
 		this.state = {
-			auth: AuthenticationStore.getState(),
+			auth: AuthenticationStore.getState()
 		};
 	}
 

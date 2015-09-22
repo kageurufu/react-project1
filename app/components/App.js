@@ -3,7 +3,9 @@
 import React from "react";
 import Header from "./Header";
 import AuthenticationStore from "../stores/AuthenticationStore"
+import WithHistory from '../decorators/History'
 
+/*::`*/ @WithHistory /*::`;*/
 export default class App extends React.Component {
 	constructor(props: any) {
 		super(props)
@@ -14,9 +16,11 @@ export default class App extends React.Component {
 	}
 
 	componentDidMount() {
-		this.handler = (e) => {
-			console.log(arguments);
+		this.handler = (store) => {
 			this.setState({auth: AuthenticationStore.getState() });
+			if (AuthenticationStore.getState().auth.loggedIn) {
+				this.props.history.pushState(null, '/');
+			}
 		};
 		AuthenticationStore.listen(this.handler);
 	}

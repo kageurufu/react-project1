@@ -25,7 +25,7 @@ class AuthenticationStore extends Store {
 	handleLogin(user: ?User) {
 		console.log(user);
 		this.user = user;
-		this.loggedIn = user;
+		this.loggedIn = !(user == null);
 	}
 
 	handleLogout() {
