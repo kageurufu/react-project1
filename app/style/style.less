@@ -1,0 +1,28 @@
+@import "~normalize.css";
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);
+
+* {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: 00;
+}
+
+.container {
+  zoom:1; 
+  &:after {
+  	clear:both;
+	}
+
+	&:before,
+	&:after {
+  	content:"";
+  	display:table;
+	}
+}
+
+@import "./header";
+@import "./content";
+@import "./form";
